@@ -1,2 +1,2 @@
-# Smitch
-Smitch - The Smart Switch 
+# SMITCH
+SMITCH - The Smart Switch 
