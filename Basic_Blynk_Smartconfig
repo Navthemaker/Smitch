@@ -1,0 +1,28 @@
+#include <ESP8266WiFi.h>         
+#include <DNSServer.h>
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>         
+#include <BlynkSimpleEsp8266.h>
+#include <Servo.h>
+
+char auth[] = "##############"; //replace with blynk auth code 
+
+Servo servo;
+
+BLYNK_WRITE(V3)
+{
+  servo.write(param.asInt());
+}
+
+void setup() {
+    Serial.begin(9600);
+    WiFiManager wifiManager;
+    wifiManager.autoConnect(); //connects to last remembered wifi, creates a AP if cant connect. Connect to AP and try to go to any link on a browser(on a coputer/ laptop), you will be redirected 
+    Serial.begin(9600);
+    Blynk.config(auth);
+    servo.attach(4); //Servo attached to pin D2 of Wemos D1 mini 
+}
+
+void loop() {
+  Blynk.run();
+}
